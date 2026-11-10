@@ -1,3 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "schema-scribe"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+    "tox>=4.67",
+    "pre-commit>=4.7",
+    "ruff~=0.17.3",
+    "mypy~=2.4.1",
+    "pytest>=9.2",
+    "pytest-cov>=7.1",
+    "pytest-custom-exit-code",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
 [tool.ruff]
 line-length = 88
 extend-exclude = ["data", "docs"]
@@ -6,7 +30,10 @@ extend-exclude = ["data", "docs"]
 select = ["E", "F", "I", "UP", "B"]
 
 [tool.mypy]
+python_version = "3.12"
 files = ["src"]
+mypy_path = "src"
+explicit_package_bases = true
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
