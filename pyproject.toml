@@ -18,6 +18,11 @@ dev = [
     "pytest-cov>=7.1",
     "pytest-custom-exit-code",
 ]
+docs = [
+    "sphinx>=8.2",
+    "furo>=2025.12",
+    "sphinx-autodoc-typehints>=3.2",
+]
 
 [tool.setuptools.packages.find]
 where = ["src"]
