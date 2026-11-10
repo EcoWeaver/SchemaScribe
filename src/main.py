@@ -2,6 +2,8 @@ import argparse
 import sys
 from pathlib import Path
 
+from extractor.extract import extract_pdfs
+
 
 def validate_paths(path_list):
     # collect all non existing paths
@@ -60,3 +62,8 @@ def main():
 
     args = parse_arguments()
     print(args)
+
+    # extract information from pdf via given library
+    extract_pdfs(args.pdf, args.recursive, args.extractor)
+
+    # ...
