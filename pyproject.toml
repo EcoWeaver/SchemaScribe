@@ -1,3 +1,22 @@
+[project]
+name = "schema-scribe"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = []
+
+[project.scripts]
+schemaScribe = "main:main"
+
+[dependency-groups]
+dev = [
+    "tox>=4.67",
+    "pre-commit>=4.7",
+    "ruff~=0.17.3",
+    "mypy~=2.4.1",
+    "pytest>=9.2",
+    "pytest-cov>=7.1"
+]
+
 [tool.ruff]
 line-length = 88
 extend-exclude = ["data", "docs"]
