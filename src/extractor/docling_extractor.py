@@ -11,7 +11,7 @@ class DoclingExtractor:
     def _get_converter(self):
         if self._converter is None:
             try:
-                from docling.document_converter import DocumentConverter
+                from docling.document_converter import DocumentConverter  # type: ignore[import-not-found]
             except ImportError as e:
                 raise UserError(
                     "Docling is not installed or could not be found!"
