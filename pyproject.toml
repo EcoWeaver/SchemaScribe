@@ -6,7 +6,12 @@ build-backend = "setuptools.build_meta"
 name = "schema-scribe"
 version = "0.1.0"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "pymupdf",
+]
+
+[project.scripts]
+schemaScribe = "main:main"
 
 [project.optional-dependencies]
 dev = [
@@ -22,6 +27,10 @@ docs = [
     "sphinx>=8.2",
     "furo>=2025.12",
     "sphinx-autodoc-typehints>=3.2",
+]
+extractors = [
+    "marker-pdf",
+    "docling",
 ]
 
 [tool.setuptools.packages.find]
