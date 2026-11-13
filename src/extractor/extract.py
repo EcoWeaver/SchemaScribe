@@ -23,7 +23,8 @@ def extract_pdfs(paths, search_recursive, library):
             print(f"  - Warning: failed to process <{file_path.name}> ")
 
     if failed_files:
-        print(f"\nFailed to convert {len(failed_files)} files!")
+        print(f"\nFailed to convert {len(failed_files)} file(s)!")
+        print(failed_files)
 
         # could save results as .md file here if needed
 

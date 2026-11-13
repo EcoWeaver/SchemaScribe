@@ -6,7 +6,6 @@ from errors import UserError
 class MarkerExtractor:
     def __init__(self):
         self._converter = None
-        # self._text_from_rendered = None
 
     # create converter (and load models) only the first time this is called
     def _get_converter(self):
@@ -20,7 +19,6 @@ class MarkerExtractor:
                 artifact_dict=create_model_dict(),
                 config={"disable_ocr": True},
             )
-            # self._text_from_rendered = text_from_rendered
 
         return self._converter
 

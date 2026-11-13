@@ -13,6 +13,7 @@ class PdfExtractor(Protocol):
 SUPPORTED_EXTRACTORS = {
     "docling": "extractor.docling_extractor:DoclingExtractor",
     "marker": "extractor.marker_extractor:MarkerExtractor",
+    "pymupdf": "extractor.pymupdf_extractor:PyMuPdfExtractor",
     # "alias": "extractor.alias:className",
 }
 

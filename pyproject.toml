@@ -3,7 +3,7 @@ name = "schema-scribe"
 version = "0.1.0"
 requires-python = ">=3.12"
 dependencies = [
-    "docling",
+    "pymupdf",
 ]
 
 [project.scripts]
@@ -26,6 +26,7 @@ docs = [
 ]
 extractors = [
     "marker-pdf",
+    "docling",
 ]
 
 [tool.setuptools.packages.find]

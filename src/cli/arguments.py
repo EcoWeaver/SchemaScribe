@@ -17,7 +17,7 @@ def validate_paths(path_list):
 
 def parse_arguments():
     parser = argparse.ArgumentParser(
-        prog="myProgram",
+        prog="SchemaScribe",
         description="...",
         usage="%(prog)s [options]",
     )
@@ -33,7 +33,13 @@ def parse_arguments():
     # TODO: do we allow more than 1 input schema?
 
     # name of pdf extraction library
-    parser.add_argument("--extractor", required=False, default="docling", help="...")
+    parser.add_argument(
+        "--extractor",
+        choices=["pymupdf", "docling", "marker"],
+        required=False,
+        default="pymupdf",
+        help="...",
+    )
 
     # llm model (accessed either locally or via api)
     modelGroup = parser.add_mutually_exclusive_group(required=True)
