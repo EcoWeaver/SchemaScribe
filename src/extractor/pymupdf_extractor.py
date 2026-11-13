@@ -16,4 +16,4 @@ class PyMuPdfExtractor:
     def to_markdown(self, pdf_path: Path) -> str:
         doc = self._pymupdf.open(str(pdf_path))
         # rapidocr package is needed for ocr usage, maybe we can add it later
-        return doc.to_markdown(use_ocr=False)
+        return doc.to_markdown(use_ocr=False)  # type: ignore[attr-defined]
