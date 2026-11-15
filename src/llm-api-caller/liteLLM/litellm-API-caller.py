@@ -3,7 +3,7 @@ from pathlib import Path
 from typing import Any
 
 import litellm
-from pydantic import BaseModel
+
 
 class litellm_API_daller:
     def __init__(
@@ -11,10 +11,10 @@ class litellm_API_daller:
         base_url: str,
         api_key: str,
         model: str,
-        temperature: float = 0.7, 
-        max_tokens: int | None = None, 
+        temperature: float = 0.7,
+        max_tokens: int | None = None,
         top_p: float | None = None,
-        compatibility: bool | None  = None, 
+        compatibility: bool | None = None,
         **extra_params: Any,
     ) -> None:
         self.base_url = base_url
@@ -28,12 +28,12 @@ class litellm_API_daller:
 
     def llm_call(
         self,
-        prompt: str, 
+        prompt: str,
         files: list[Path] | None = None,
-        schema: list[Path] | None = None,  
+        schema: list[Path] | None = None,
     ) -> dict[str, Any]:
-    
-        #Fusion of the prompt, schema, and data
+
+        # Fusion of the prompt, schema, and data
         parts = [prompt]
         for p in schema or []:
             parts.append(f"--- Datei: {p.name} ---\n{p.read_text(encoding='utf-8')}")
@@ -41,9 +41,11 @@ class litellm_API_daller:
             parts.append(f"--- Datei: {p.name} ---\n{p.read_text(encoding='utf-8')}")
 
         # provider prefix: None = OpenAI, True = Anthropic, False = Gemini
-        provider = {None: "openai", True: "anthropic", False: "gemini"}[self.compatibility]
-        
-        #call API via LiteLLM 
+        provider = {None: "openai", True: "anthropic", False: "gemini"}[
+            self.compatibility
+        ]
+
+        # call API via LiteLLM
         response = litellm.completion(
             model=f"{provider}/{self.model}",
             api_base=self.base_url,
@@ -55,7 +57,7 @@ class litellm_API_daller:
             **self.extra_params,
         )
 
-        # returning answer as jason 
+        # returning answer as jason
         msg = response.choices[0].message
         usage = response.usage
         content = msg.content or ""
