@@ -41,10 +41,26 @@ def parse_arguments():
         help="...",
     )
 
-    # llm model (accessed either locally or via api)
-    modelGroup = parser.add_mutually_exclusive_group(required=True)
-    modelGroup.add_argument("--local", help="...")
-    modelGroup.add_argument("--api", help="...")
+    # llm model informations (accessed via api)
+    parser.add_argument(
+        "--base_url",
+        required=True,
+        help="Base URL is the API URL used to call your LLM model.",
+    )
+    parser.add_argument("--api_key", required=True, help="Your access key")
+    parser.add_argument("--model", required=True)
+    parser.add_argument("--temperature", type=float, default=0.7)
+    parser.add_argument("--max-tokens", type=int, default=None)
+    parser.add_argument("--top_p", type=float, default=None)
+    parser.add_argument("--timeout_llm", type=int, default=1200, help="in seconds")
+    parser.add_argument("--max_retries", type=int, default=2)
+    parser.add_argument(
+        "--provider",
+        choices=["openai", "anthropic", "gemini"],
+        default="openai",
+        help="API format",
+    )
+    # TODO extra Parameter
 
     # output format
     parser.add_argument("--outputFormat", required=False, default="rdf", help="...")

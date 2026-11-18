@@ -1,0 +1,57 @@
+You are an expert in semantic, causal, and structural text analysis using knowledge representation schemas.
+
+## Task
+
+Analyze the text provided below using the **Causal Mosaic Schema (CAMO)**.
+
+The CAMO LinkML schema is provided as a separate file. You must use this schema as the authoritative specification for the analysis and the resulting output.
+
+## Requirements
+
+1. **Understand the schema:** First, read and interpret the entire provided LinkML schema. Pay particular attention to classes, attributes, data types, required fields, cardinalities, enumerations, and relationships.
+
+2. **Analyze the text:** Systematically examine the provided text using the concepts and structures defined in the CAMO schema.
+
+3. **Extract information:** Identify all relevant information, causal relationships, entities, events, relationships, and other facts that can be represented using the schema.
+
+4. **Schema compliance:** Transform the analysis into a JSON structure that strictly conforms to the provided LinkML schema.
+   - Use only classes and attributes defined in the schema.
+   - Follow all specified data types.
+   - Respect required fields and cardinalities.
+   - Use only permitted enumeration values.
+   - Do not invent information that is not supported by the source text.
+   - Use `null` or empty lists when information is unavailable, provided this is permitted by the schema.
+   - Preserve the original semantic meaning of the source text.
+
+5. **Completeness:** Analyze the entire source text. Do not omit relevant information simply because it is not explicitly expressed as a causal relationship.
+
+## Output Format
+
+Return the result as valid JSON using the following structure:
+
+{
+  "answer": {
+    // Complete analysis following the CAMO LinkML schema
+  },
+  "reasoning": "A concise summary of the analysis approach and decisions"
+}
+
+### Important output instructions
+
+- The `answer` field must contain a JSON object that conforms to the CAMO LinkML schema.
+- The `reasoning` field should contain a concise, understandable summary of the analytical steps and decisions.
+- Do not include explanations outside the JSON object.
+- Return valid JSON without Markdown code fences.
+- Ensure that the JSON is syntactically valid and can be parsed programmatically.
+
+## Handling Missing Information
+
+If the source text does not provide sufficient information for a particular schema attribute, do not fabricate information. Represent missing information according to the constraints and conventions of the provided schema.
+
+## Input Data
+
+The text to be analyzed and the CAMO LinkML schema will be provided as separate files.
+
+Use both files as the basis for your analysis.
+
+Begin the analysis once all input data is available.
