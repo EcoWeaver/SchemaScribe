@@ -59,12 +59,11 @@ class litellm_API_caller:
             max_retries=self.max_retries,
             **self.extra_params,
         )
-        # Stream einsammeln
         content_parts: list[str] = []
         reasoning_parts: list[str] = []
         usage = None
 
-        for chunk in response:  # bei dir heißt die Variable "response", nicht "stream"
+        for chunk in response: 
             if chunk.choices:
                 delta = chunk.choices[0].delta
                 if getattr(delta, "content", None):
@@ -73,11 +72,9 @@ class litellm_API_caller:
                     reasoning_parts.append(delta.reasoning_content)
             if getattr(chunk, "usage", None):
                 usage = chunk.usage
-
         content = "".join(content_parts)
         reasoning = "".join(reasoning_parts) or None
 
-        # Antwort als JSON zurückgeben
         try:
             answer = json.loads(content)
         except json.JSONDecodeError:
