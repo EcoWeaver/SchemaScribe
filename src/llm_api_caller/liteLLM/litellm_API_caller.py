@@ -28,7 +28,7 @@ class litellm_API_caller:
         self.max_tokens = max_tokens
         self.top_p = top_p
         self.timeout = timeout
-        self.max_reties = max_retries
+        self.max_retries = max_retries
 
     def llm_call(
         self,
@@ -56,23 +56,38 @@ class litellm_API_caller:
             top_p=self.top_p,
             timeout=self.timeout,
             stream=True,
-            max_reties=self.max_reties,
+            max_retries=self.max_retries,
             **self.extra_params,
         )
+        # Stream einsammeln
+        content_parts: list[str] = []
+        reasoning_parts: list[str] = []
+        usage = None
 
-        # returning answer as jason
-        msg = response.choices[0].message
-        usage = response.usage
-        content = msg.content or ""
+        for chunk in response:  # bei dir heißt die Variable "response", nicht "stream"
+            if chunk.choices:
+                delta = chunk.choices[0].delta
+                if getattr(delta, "content", None):
+                    content_parts.append(delta.content)
+                if getattr(delta, "reasoning_content", None):
+                    reasoning_parts.append(delta.reasoning_content)
+            if getattr(chunk, "usage", None):
+                usage = chunk.usage
+
+        content = "".join(content_parts)
+        reasoning = "".join(reasoning_parts) or None
+
+        # Antwort als JSON zurückgeben
         try:
             answer = json.loads(content)
         except json.JSONDecodeError:
             answer = content
+
         return {
             "answer": answer,
-            "reasoning": getattr(msg, "reasoning_content", None),
+            "reasoning": reasoning,
             "max_tokens": self.max_tokens,
-            "prompt_tokens": usage.prompt_tokens,
-            "completion_tokens": usage.completion_tokens,
-            "total_tokens": usage.total_tokens,
+            "prompt_tokens": getattr(usage, "prompt_tokens", None),
+            "completion_tokens": getattr(usage, "completion_tokens", None),
+            "total_tokens": getattr(usage, "total_tokens", None),
         }
