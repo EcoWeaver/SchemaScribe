@@ -26,9 +26,11 @@ Optional dependencies are available as extras:
 
 .. code-block:: bash
 
-   pip install -e ".[dev]"        # development tools
-   pip install -e ".[docs]"       # documentation dependencies
-   pip install -e ".[dev,docs]"   # both
+   pip install -e ".[dev]"                  # development tools
+   pip install -e ".[docs]"                 # documentation dependencies
+   pip install -e ".[extractors]"           # extraction libraries, currently for testing purposes
+   pip install -e ".[dev,docs]"             # both main depency collections
+   pip install -e ".[dev,docs, extractors]" # all
 
 Build the documentation locally:
 

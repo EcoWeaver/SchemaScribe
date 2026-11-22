@@ -31,6 +31,12 @@ docs = [
 extractors = [
     "marker-pdf",
     "docling",
+    "pymupdf4llm",
+    "pdfmd",
+    "paper-to-md",
+    # "appjsonify", # Dropped for now due to python/torch version incompatibility, needs separate .venv
+    # "detectron2 @ git+https://github.com/facebookresearch/detectron2.git" # appjsonify dependency
+    # "brew install llama.cpp" for MacOS, not pip-available
 ]
 
 [tool.setuptools.packages.find]

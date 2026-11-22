@@ -1,0 +1,69 @@
+{
+  "pdf": "/Users/friedrichurban/Desktop/GitHub/SchemaScribe/data/Murphy2005.pdf",
+  "results": {
+    "docling": {
+      "md": {
+        "status": "ok",
+        "seconds": 148.01203829108272,
+        "chars": 60205,
+        "file": "docling.md",
+        "error": null
+      },
+      "json": {
+        "status": "unsupported",
+        "seconds": 0.0,
+        "chars": 0,
+        "file": null,
+        "error": null
+      }
+    },
+    "marker": {
+      "md": {
+        "status": "ok",
+        "seconds": 48.30314216692932,
+        "chars": 106394,
+        "file": "marker.md",
+        "error": null
+      },
+      "json": {
+        "status": "unsupported",
+        "seconds": 0.0,
+        "chars": 0,
+        "file": null,
+        "error": null
+      }
+    },
+    "pymupdf": {
+      "md": {
+        "status": "ok",
+        "seconds": 2.828269666992128,
+        "chars": 56668,
+        "file": "pymupdf.md",
+        "error": null
+      },
+      "json": {
+        "status": "unsupported",
+        "seconds": 0.0,
+        "chars": 0,
+        "file": null,
+        "error": null
+      }
+    },
+    "pdfmd": {
+      "md": {
+        "status": "failed",
+        "seconds": 0.0,
+        "chars": 0,
+        "file": null,
+        "error": "load error: pdfmd is not installed or could not be found!"
+      },
+      "json": {
+        "status": "failed",
+        "seconds": 0.0,
+        "chars": 0,
+        "file": null,
+        "error": "load error: pdfmd is not installed or could not be found!"
+      }
+    }
+  }
+}

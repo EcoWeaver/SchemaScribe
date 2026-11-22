@@ -1,0 +1,21 @@
+{
+  "pdf": "/Users/friedrichurban/Desktop/GitHub/SchemaScribe/data/Murphy2005.pdf",
+  "results": {
+    "marker": {
+      "md": {
+        "status": "ok",
+        "seconds": 544.0325799999991,
+        "chars": 59123,
+        "file": "marker.md",
+        "error": null
+      },
+      "json": {
+        "status": "ok",
+        "seconds": 188.81479579105508,
+        "chars": 432801,
+        "file": "marker.json",
+        "error": null
+      }
+    }
+  }
+}

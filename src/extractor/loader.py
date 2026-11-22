@@ -14,6 +14,8 @@ SUPPORTED_EXTRACTORS = {
     "docling": "extractor.docling_extractor:DoclingExtractor",
     "marker": "extractor.marker_extractor:MarkerExtractor",
     "pymupdf": "extractor.pymupdf_extractor:PyMuPdfExtractor",
+    "pdfmd": "extractor.pdfmd_extractor:PdfmdExtractor",
+    # "appjsonify": "extractor.appjsonify_extractor:AppJsonifyExtractor", # dropped for now bc dependency issues
     # "alias": "extractor.alias:className",
 }
 
