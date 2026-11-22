@@ -10,3 +10,4 @@ __pycache__/
 .env.*
 docs/_build/
 .vscode
+.DS_Store
