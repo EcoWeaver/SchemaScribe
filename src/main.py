@@ -5,8 +5,8 @@ from pathlib import Path
 from cli.arguments import parse_arguments
 from errors import UserError
 from extractor.extract import extract_pdfs
+from llm_api_caller import manager
 from llm_api_caller.errors_plugin_caller import UnknownPluginError
-from llm_api_caller.manager import Plugin_manager
 
 
 def run():
@@ -17,7 +17,7 @@ def run():
     extracted_files = extract_pdfs(args.pdf, args.recursive, args.extractor)
 
     try:
-        manager = Plugin_manager()
+        # manager = Plugin_manager()
         plugin_cls = manager.get(args.name_Plugin)
     except UnknownPluginError as e:
         sys.exit(str(e))
@@ -38,16 +38,16 @@ def run():
     #   - Extract given class frome the LinkLM schema and save as Json
     #   - fuse Promt, schema class and extrated text
 
-    prompt_path = Path("prompt") / "prompt.txt"
-    prompt = prompt_path.read_text(encoding="utf-8")
-    prompt = f"{prompt}\n\nText:\n{extracted_files}"
+    prompt_path = Path("prompt") / "prompt.txt"  # Temporary
+    prompt = prompt_path.read_text(encoding="utf-8")  # Temporary
+    prompt = f"{prompt}\n\nText:\n{extracted_files}"  # Temporary
 
-    print("calling LLM...")
-    result = api_caller.call_api(prompt)
+    print("calling LLM...")  # Temporary
+    result = api_caller.call_api(prompt)  # Temporary
 
     # TODO save json
 
-    # print rep in the terminal
+    # print rep in the terminal Temporary
     print("\n--- ANSWER ---")
     print(json.dumps(result["answer"], indent=4, ensure_ascii=False))
     print("\n--- REASONING ---")
