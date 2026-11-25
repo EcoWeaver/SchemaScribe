@@ -1,0 +1,25 @@
+Check the provided input and verify the following:
+
+1. **Text Check:** Check whether text content is present in the input. Confirm whether text has been found.
+
+2. **Output Format:** Return the results as valid JSON using the following structure:
+
+{
+  "text_present": true,
+  "confirmation": {
+    "text": "Text content successfully detected."
+  },
+  "thinking_log": "Brief summary of the text check performed.",
+  "token_usage": {
+    "prompt_tokens": null,
+    "completion_tokens": null,
+    "total_tokens": null
+  }
+}
+
+**Important:**
+- Set `text_present` to `true` or `false` based on the actual input.
+- Do not assume that text is present.
+- Check only for text content. Do not search for, detect, or validate any LinkML schema.
+- Do not invent token usage values. If token information is unavailable, use `null`.
+- Return valid JSON only, without Markdown formatting or additional explanations.

@@ -1,4 +1,5 @@
 import argparse
+import json
 from pathlib import Path
 
 from errors import UserError
@@ -41,7 +42,8 @@ def parse_arguments():
         help="...",
     )
 
-    # llm model informations (accessed via api)
+    # llm model informations (accesse via api)
+    parser.add_argument("--name_Plugin", default="litellm", type=str)
     parser.add_argument(
         "--base_url",
         required=True,
@@ -60,6 +62,11 @@ def parse_arguments():
         default="openai",
         help="API format",
     )
+    parser.add_argument(
+        "--extra_params",
+        type=json_dict,
+        default={},
+    )
     # TODO extra Parameter
 
     # output format
@@ -72,3 +79,13 @@ def parse_arguments():
     validate_paths(args.schema)
 
     return args
+
+
+def json_dict(text: str) -> dict:
+    try:
+        value = json.loads(text)
+    except json.JSONDecodeError as e:
+        raise argparse.ArgumentTypeError(f"invalid JSON: {e}")
+    if not isinstance(value, dict):
+        raise argparse.ArgumentTypeError("must be a JSON object, e.g. '{\"key\": 1}'")
+    return value
