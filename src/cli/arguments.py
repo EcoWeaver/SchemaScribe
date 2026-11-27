@@ -85,7 +85,7 @@ def json_dict(text: str) -> dict:
     try:
         value = json.loads(text)
     except json.JSONDecodeError as e:
-        raise argparse.ArgumentTypeError(f"invalid JSON: {e}")
+        raise argparse.ArgumentTypeError(f"invalid JSON: {e}") from e
     if not isinstance(value, dict):
         raise argparse.ArgumentTypeError("must be a JSON object, e.g. '{\"key\": 1}'")
     return value

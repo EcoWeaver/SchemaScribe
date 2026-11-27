@@ -39,7 +39,7 @@ class Base_api_caller(ABC):
         self.max_retries = max_retries
         self.setup()
 
-    def setup(self) -> None:
+    def setup(self) -> None:  # noqa: B027
         pass  # if needed
 
     @abstractmethod

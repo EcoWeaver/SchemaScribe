@@ -10,11 +10,6 @@ Check the provided input and verify the following:
     "text": "Text content successfully detected."
   },
   "thinking_log": "Brief summary of the text check performed.",
-  "token_usage": {
-    "prompt_tokens": null,
-    "completion_tokens": null,
-    "total_tokens": null
-  }
 }
 
 **Important:**
